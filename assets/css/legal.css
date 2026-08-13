@@ -1,0 +1,107 @@
+/* ═══════════════════════════════════════════════════════════
+   GA DEMANDS — legal pages (Terms & Conditions, Privacy Policy)
+   Layered on top of style.css
+   ═══════════════════════════════════════════════════════════ */
+
+.legal-page{background:var(--paper);}
+
+/* ── hero (shares .page-hero from style.css) ───────── */
+.legal__hero{text-align:left;}
+.legal__back{
+  display:inline-block;margin-bottom:26px;
+  font-size:14px;font-weight:500;color:var(--ink-500);
+  transition:color .3s,transform .4s var(--ease);
+}
+.legal__back:hover{color:var(--teal-700);transform:translateX(-3px);}
+.legal__title{
+  font-size:clamp(2.3rem,5.4vw,4rem);color:var(--ink);letter-spacing:-.03em;margin:0 0 14px;
+}
+.legal__sub{
+  margin:0;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold-600);font-weight:500;
+}
+
+/* ── layout ───────────────────────────────────────── */
+.legal__layout{
+  display:grid;grid-template-columns:250px 1fr;
+  gap:clamp(36px,5vw,72px);
+  padding-block:clamp(48px,6vw,80px) clamp(72px,9vw,120px);
+  align-items:start;
+}
+
+/* ── table of contents ────────────────────────────── */
+.legal__toc{
+  position:sticky;top:100px;
+  max-height:calc(100vh - 140px);overflow-y:auto;
+  padding-right:8px;
+  scrollbar-width:thin;scrollbar-color:var(--line) transparent;
+}
+.legal__toc::-webkit-scrollbar{width:5px;}
+.legal__toc::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px;}
+.legal__toc h2{
+  font-family:var(--ff-body);font-size:11.5px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-300);
+  margin:0 0 16px;
+}
+.legal__toc nav{display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--line);}
+.legal__toc a{
+  position:relative;padding:8px 0 8px 16px;margin-left:-1px;
+  border-left:1px solid transparent;
+  font-size:13.5px;line-height:1.45;color:var(--ink-500);
+  transition:color .3s,border-color .3s,background .3s;
+}
+.legal__toc a:hover{color:var(--teal-700);border-left-color:rgba(40,175,176,.5);}
+.legal__toc a.is-current{
+  color:var(--teal-700);font-weight:600;border-left-color:var(--teal);
+}
+
+/* ── body copy ────────────────────────────────────── */
+.legal__body{max-width:74ch;}
+.legal__body p{
+  font-size:16px;line-height:1.8;color:var(--ink-700);margin:0 0 1.15em;
+}
+.legal__body a{
+  color:var(--teal-700);font-weight:500;
+  border-bottom:1px solid rgba(40,175,176,.4);
+  word-break:break-word;transition:border-color .3s,color .3s;
+}
+.legal__body a:hover{color:var(--teal);border-bottom-color:var(--teal);}
+
+.legal__h{
+  scroll-margin-top:110px;
+  font-size:clamp(1.25rem,2.2vw,1.6rem);
+  letter-spacing:-.02em;line-height:1.25;
+  margin:2.4em 0 .85em;padding-top:1.5em;
+  border-top:1px solid var(--line);
+  color:var(--ink);
+}
+.legal__body > .legal__h:first-child{margin-top:0;padding-top:0;border-top:0;}
+.legal__h::after{
+  content:'';display:block;width:44px;height:2px;margin-top:14px;
+  background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:2px;
+}
+
+/* ── footer trim on legal pages ───────────────────── */
+.legal-page .footer{padding-top:0;}
+.legal-page .footer__copy a{color:var(--ink-500);}
+.legal-page .footer__copy a:hover{color:var(--teal-700);}
+
+/* ── responsive ───────────────────────────────────── */
+@media (max-width:900px){
+  .legal__layout{grid-template-columns:1fr;}
+  .legal__toc{
+    position:static;max-height:none;
+    padding:22px 24px;border-radius:var(--radius);
+    background:var(--paper-2);border:1px solid var(--line);
+  }
+  .legal__toc nav{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+    gap:2px 18px;border-left:0;
+  }
+  .legal__toc a{padding-left:0;border-left:0;}
+  .legal__toc a:hover,.legal__toc a.is-current{border-left:0;}
+}
+
+@media (max-width:640px){
+  .legal__body p{font-size:15.5px;}
+}
